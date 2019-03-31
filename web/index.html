@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>WebAssembly zip archive reader</title>
+</head>
+<body>
+  <main id="app">
+    <form>
+      <input type="file" id="zip-upload" accept="application/zip" @change="handleFileChange">
+      <label for="zip-upload" :class="{'complete': uploadComplete}">
+        <i class="fas fa-fw fa-upload"></i> 
+        <span v-if="!uploadedFileName">Choose a file&hellip;</span>
+        <span v-text="uploadedFileName"></span>
+        <div id="progress" :style="{width: uploadProgress + '%'}"></div>
+      </label>
+    </form>
+
+    <table v-cloak v-if="uploadComplete" id="entry-list">
+      <tr>
+        <th>Type</th>
+        <th>File name</th>
+        <th>Size</th>
+      </tr>
+      <tr v-for="file in files">
+        <td class="type">
+          <i class="far fa-fw" :class="file.isDirectory ? 'fa-folder-open' : 'fa-file'"></i>
+        </td>
+        <td v-text="file.name"></td>
+        <td class="size"><span v-if="!file.isDirectory" v-text="file.size"></span></td>
+      </tr>
+    </table>
+  </main>
+
+  <script type="module" src="main.mjs"></script>
+</body>
+</html>

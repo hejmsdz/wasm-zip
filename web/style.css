@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+body {
+  color: #182825;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+#app {
+  max-width: 600px;
+  margin: auto;
+}
+
+#zip-upload {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#zip-upload + label {
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  background: #016FB9;
+  color: #fff;
+  padding: 12px 18px;
+  margin: 20px 0;
+  transition: background .2s;
+  border-radius: 3px;
+}
+
+#zip-upload + label:hover {
+  background: #0162a2;
+}
+
+#progress {
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  width: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  transition: width 0.2s;
+}
+
+#zip-upload + label.complete {
+  background: #679436;
+}
+
+#zip-upload + label.complete #progress {
+  display: none;
+}
+
+#entry-list {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+#entry-list th {
+  text-align: left;
+}
+
+#entry-list td, #entry-list th {
+  padding: 8px 4px;
+}
+
+#entry-list tr:nth-child(odd) {
+  background: #f0f0f0;
+}
+
+#entry-list td.type {
+  text-align: center;
+}
+
+#entry-list td.size {
+  text-align: right;
+}
